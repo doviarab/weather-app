@@ -9,7 +9,6 @@ class WeatherAppConfig(AppConfig):
 
     def ready(self):
         if os.environ.get('RUN_MAIN') == 'true':
-            print("Esto se ejecuta al iniciar el servidor")
             redisClient = redis.StrictRedis(host='redis', port=6379, db=0)
             coordinates = "-70.6483,-33.4569"
             redisClient.hset("Cities", "Santiago", coordinates)

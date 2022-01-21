@@ -33,8 +33,8 @@ class WeatherConsumer(SyncConsumer):
             url = "http://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}&units=metric".format(coordinates[1], coordinates[0], settings.API_KEY)
             res = requests.get(url)
             data = res.json()
+            redisClient.hset("Weather", data['name'], data['main']['temp'])
             weathers[data['name']] = data['main']['temp']
-            print(json.dumps(weathers))
         self.send({
             "type": "websocket.send",
             "text": json.dumps(weathers),
