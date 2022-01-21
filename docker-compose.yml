@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ./django-app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django-app/:/usr/src/django-app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    links:
+      - redis
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+  frontend:
+    build: ./angular-app
+    volumes:
+    - './angular-app/:/usr/src/angular-app'
+
+    ports:
+      - "4200:4200"
+    links:
+      - backend

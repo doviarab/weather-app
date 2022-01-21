@@ -1,0 +1,9 @@
+<body>
+    <div align="center" style="font-size: 100px;">{{ time | date: 'hh:mm:ss a' }}</div>
+    <div>Santiago: {{ time | date: 'hh:mm:ss a': 'UTC - 3' }} Temperatura: {{ weatherObject["Santiago"] }}°C</div>
+    <div>Zürich: {{ time | date: 'hh:mm:ss a': 'UTC + 1' }} Temperatura: {{ weatherObject["Zurich"] }}°C</div>
+    <div>Auckland: {{ time | date: 'hh:mm:ss a': 'UTC + 13' }} Temperatura: {{ weatherObject["Auckland"] }}°C</div>
+    <div>Sydney: {{ time | date: 'hh:mm:ss a': 'UTC + 11' }} Temperatura: {{ weatherObject["Sydney"] }}°C</div>
+    <div>Londres: {{ time | date: 'hh:mm:ss a': 'UTC + 0' }} Temperatura: {{ weatherObject["London"] }}°C</div>
+    <div>Georgia (EE.UU.): {{ time | date: 'hh:mm:ss a': 'UTC - 5' }} Temperatura: {{ weatherObject["Georgia"] }}°C</div>
+</body>
